@@ -1,0 +1,48 @@
+定义：
+    脚手架就是自动配置好各种技术栈及其生成/梳理项目目录结构
+        
+功能：
+1. 因为React会把组件追加到html节点，所以脚手架就需要为React生成html根节点
+2. 为html提供模板功能（变量替换，条件判断）等
+3. 使用CSS Module对CSS进行模块化，语言化开发(Webpack)
+4. 将es2015(es6)、es2016(es7)、es2018(es8)编译成浏览器能识别的es5(Babel)
+5. 将组件(内聚逻辑样式图片的自定义控件)进行打包(Webpack)
+6. 在开发阶段创建web服务器，进行代码的热更新
+
+
+Babel
+    核心两部分：Presets以及Plugins
+    Presets: Babel配置的核心，一般是支持编译的js语法版本，js语法糖，babel-preset-env支持目前最新的js语法版本集合，babel-react支持将React中的jsx编译成js函数
+    Plugins: 对Presets的扩展，比如支持对象/数组延展操作符...，使用babel-plugin-transform-object-rest-spread和支持使用static关键字定义静态属性和方法的babel-plugin-transform-class-properties
+    
+Webpack3.X
+    entry: 打包的入口文件，支持字符串、数组、对象
+    output: 打包后的文件配置
+        path: 打包后的磁盘目录
+        filename: 打包后的文件名，
+        publicPath:  Css或Html引用静态资源(图片，图标)的基础路径
+    resolve: 配置如何查找模块对应的文件   
+        extensions: 自动扩展模块后缀名
+        alias: 模块别名，简写模块的书写
+    module: 配置如何打包各种资源
+        [
+            test: 匹配模块后缀名的正则
+            exclude: 忽略在此目录下查找本模块
+            include: 仅在此目录下查找本模块
+            // include和exclude如果都存在，那么是and关系
+            use: 使用哪个loader处理本模块
+        ]    
+    
+   
+目录
+    pages/: 存放页面组件
+    layouts/: 存放布局组件（可复用）
+    components/: 存放业务UI组件（可复用）
+    hocs/: 存放业务逻辑组件(智能组件和木偶组件)
+    app/: 存放应用级别的配置，菜单、路由、应用初始化（redux，路由）
+    utils/: 存放功能性函数，数组增删改查、去重、扁平化、深拷贝
+    styles/: 存放全局的css样式
+    assets/: 存放全局静态资源，如图片、图标
+    
+        
+    
